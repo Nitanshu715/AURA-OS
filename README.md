@@ -1,4 +1,6 @@
-# AURAOS — Project Synopsis
+<p align="center">
+  <img src="AURAOS_Logo.png" alt="AURAOS — Agentic Unified Replica Architecture Operating System" width="420"/>
+</p>
 
 **Agentic Unified Replica Architecture Operating System**
 *A Goal-Oriented Operating System with Sandboxed Multi-Agent Execution and Digital-Twin-Gated Verification*
