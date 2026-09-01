@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="AURAOS_Logo.png" alt="AURAOS — Agentic Unified Replica Architecture Operating System" width="420"/>
+  <img src="AURA_OS_Logo.png" alt="AURAOS — Agentic Unified Replica Architecture Operating System" width="420"/>
 </p>
 
 **Agentic Unified Replica Architecture Operating System**
