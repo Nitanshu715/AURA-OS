@@ -1,0 +1,34 @@
+# Build & VM Artifacts
+buildroot/
+NitanshuOS/
+*.iso
+*.vmdk
+*.img
+*.qcow2
+*.tar.gz
+*.tar.xz
+*.bin
+
+# Python Cache & Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# System & OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.log
+
+# Sensitive Credentials & Keys
+*.env
+*.env.*
+*.pem
+*.key
+*.cert
+*.id_rsa
+secrets/

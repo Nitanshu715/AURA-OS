@@ -1,0 +1,9 @@
+Welcome to AURA-OS v2.0 LTS
+===========================
+
+A real operating system environment running directly on top of the NitanshuOS Linux kernel.
+All filesystem, process, network, and sandbox operations are real and verified.
+
+- Terminal: Real /bin/bash login shell with PTY
+- Task Manager: Real /proc metrics and cgroups v2 resource tracking
+- Sandbox: OverlayFS isolation for safe execution

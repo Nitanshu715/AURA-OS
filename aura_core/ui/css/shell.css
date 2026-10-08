@@ -1,0 +1,387 @@
+/**
+ * AURA-OS Cyber-Glass Desktop Shell
+ * Dynamic Status Island, Floating Command Deck, Top Glass Bar, and Control Center.
+ */
+
+#shell-root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-desktop);
+}
+
+/* Wallpaper Canvas */
+#wallpaper-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* -------------------------------------------------------------
+ * 1. TOP GLASS MENU BAR (32px)
+ * ------------------------------------------------------------- */
+#topbar {
+  height: var(--topbar-h);
+  background: var(--topbar-bg);
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  position: relative;
+  z-index: 500;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.aura-system-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-btn);
+  background: var(--aurora-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #021214;
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--accent-glow);
+  transition: transform var(--trans-fast);
+}
+
+.aura-system-btn:hover {
+  transform: scale(1.1);
+}
+
+.aura-system-btn svg {
+  width: 13px;
+  height: 13px;
+}
+
+.topbar-brand-title {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text-0);
+  letter-spacing: -0.01em;
+}
+
+/* Workspace Switcher Pills */
+.workspace-pills {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 3px;
+  border-radius: 9999px;
+  border: 1px solid var(--glass-border-subtle);
+}
+
+.ws-pill {
+  padding: 2px 8px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-2);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.ws-pill.active {
+  background: var(--accent);
+  color: var(--accent-text-dark);
+  font-weight: 600;
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* -------------------------------------------------------------
+ * 2. DYNAMIC STATUS ISLAND (Center Topbar Widget)
+ * ------------------------------------------------------------- */
+.topbar-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#dynamic-status-island {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 12px;
+  background: rgba(14, 20, 32, 0.95);
+  border: 1px solid var(--accent-dim);
+  border-radius: var(--radius-island);
+  box-shadow: var(--shadow-island);
+  cursor: pointer;
+  transition: all var(--trans-spring);
+}
+
+#dynamic-status-island:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+#dynamic-status-island.running {
+  background: var(--island-gradient);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.island-spectrum-canvas {
+  width: 50px;
+  height: 14px;
+}
+
+/* Topbar Right Tray */
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tray-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 22px;
+  padding: 0 7px;
+  border-radius: var(--radius-tag);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border-subtle);
+  font-size: 11px;
+  color: var(--text-1);
+  cursor: pointer;
+  transition: background var(--trans-fast);
+}
+
+.tray-chip:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-0);
+}
+
+/* -------------------------------------------------------------
+ * 3. DESKTOP WORKSPACES AREA
+ * ------------------------------------------------------------- */
+#workspaces-view {
+  flex: 1;
+  position: relative;
+  z-index: 10;
+  padding: 8px 12px 86px 12px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* -------------------------------------------------------------
+ * 4. FLOATING COMMAND DECK (Bottom HUD Dock)
+ * ------------------------------------------------------------- */
+#dock-container {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: var(--dock-bg);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-dock);
+  box-shadow: var(--shadow-dock), 0 0 30px rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
+}
+
+.dock-item {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform-origin: bottom center;
+  z-index: 1;
+  transition: background var(--trans-fast), border-color var(--trans-fast), box-shadow var(--trans-fast);
+}
+
+.dock-item:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: var(--glass-border-focus);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 10px var(--accent-glow);
+}
+
+.dock-item svg {
+  width: 18px;
+  height: 18px;
+  color: var(--text-0);
+  pointer-events: none;
+}
+
+/* Glowing running indicator dot */
+.dock-item.running::after {
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+}
+
+.dock-item.focused {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.dock-badge {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  background: var(--err);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 9999px;
+}
+
+.dock-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 3px 9px;
+  background: rgba(8, 12, 20, 0.96);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-btn);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-0);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.85);
+  transition: opacity var(--trans-fast);
+  z-index: 1000;
+}
+
+.dock-item:hover .dock-tooltip {
+  opacity: 1;
+}
+
+.dock-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 0 2px;
+}
+
+/* -------------------------------------------------------------
+ * 5. CONTROL CENTER FLYOUT PANEL
+ * ------------------------------------------------------------- */
+#control-center-panel {
+  position: absolute;
+  top: 38px;
+  right: 12px;
+  width: 300px;
+  background: var(--popover-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-popover);
+  padding: 12px;
+  z-index: 700;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#control-center-panel.open {
+  display: flex;
+}
+
+.cc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.cc-card-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-card);
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background var(--trans-fast);
+}
+
+.cc-card-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cc-card-btn.active {
+  background: var(--accent-dim);
+  border-color: rgba(0, 242, 254, 0.4);
+}
+
+/* -------------------------------------------------------------
+ * 6. AURA SYSTEM MENU
+ * ------------------------------------------------------------- */
+#system-menu {
+  position: absolute;
+  top: 38px;
+  left: 12px;
+  width: 220px;
+  background: var(--popover-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  box-shadow: var(--shadow-popover);
+  padding: 5px;
+  z-index: 700;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+}
+
+#system-menu.open {
+  display: flex;
+}
+
+.system-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-0);
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+}
+
+.system-menu-item:hover {
+  background: var(--accent);
+  color: var(--accent-text-dark);
+}
+
+.system-menu-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 3px 0;
+}

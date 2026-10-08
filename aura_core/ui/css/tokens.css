@@ -1,0 +1,119 @@
+/**
+ * AURA-OS Professional Executive Design Tokens
+ * Crisp white surfaces, light blue accents, frosted glass acrylics, and dark slate typography.
+ * 100% Zero Fake Data.
+ */
+
+:root {
+  /* -------------------------------------------------------------
+   * 1. CRISP WHITE & FROSTED GLASS SURFACES (Executive Class)
+   * ------------------------------------------------------------- */
+  --bg-0: #EDF2F7;                      /* Desktop base fallback */
+  --bg-1: #FFFFFF;                      /* Window body & major cards */
+  --bg-2: #F8FAFC;                      /* Toolbars, sidebars, inputs, titlebars */
+  --bg-3: #F1F5F9;                      /* Hover states, list hovers */
+  --bg-4: #E2E8F0;                      /* Selected items, active tabs */
+  --bg-acrylic: rgba(255, 255, 255, 0.88); /* Taskbar & Start Menu frosted blur */
+  --bg-acrylic-dark: rgba(15, 23, 42, 0.88);
+
+  /* Precise Hairlines & Glass Highlights */
+  --line-1: rgba(15, 23, 42, 0.08);
+  --line-2: rgba(15, 23, 42, 0.14);
+  --line-focus: var(--accent);
+  --top-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  /* -------------------------------------------------------------
+   * 2. VIBRANT LIGHT-BLUE & EXECUTIVE ACCENTS
+   * ------------------------------------------------------------- */
+  --accent-cyan: #0284C7;               /* Executive Azure / Sky Blue */
+  --accent-violet: #6366F1;             /* Indigo Slate */
+  --accent-emerald: #059669;            /* Mint Emerald */
+  --accent-amber: #D97706;              /* Warm Amber */
+  --accent-rose: #E11D48;               /* Crimson Rose */
+
+  --accent: var(--accent-cyan);
+  --accent-secondary: #38BDF8;
+  --accent-dim: rgba(2, 132, 199, 0.12);
+  --accent-glow: rgba(2, 132, 199, 0.28);
+  --accent-text-dark: #FFFFFF;
+
+  /* Status Colors */
+  --ok: #10B981;
+  --warn: #F59E0B;
+  --err: #EF4444;
+  --info: #0284C7;
+
+  /* -------------------------------------------------------------
+   * 3. TYPOGRAPHY & TEXT (High Legibility Slate Palette)
+   * ------------------------------------------------------------- */
+  --text-0: #0F172A;                    /* Deep slate heading & body */
+  --text-1: #334155;                    /* Subheadings & labels */
+  --text-2: #64748B;                    /* Annotations, hints, paths */
+  --text-3: #94A3B8;                    /* Disabled elements */
+
+  --font-sans: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Menlo, monospace;
+
+  /* -------------------------------------------------------------
+   * 4. RADII & SHADOWS
+   * ------------------------------------------------------------- */
+  --radius-win: 10px;                   /* Smooth modern window corners */
+  --radius-card: 8px;
+  --radius-btn: 6px;
+  --radius-tag: 4px;
+  --radius-start: 12px;
+
+  --shadow-window: 0 14px 40px rgba(15, 23, 42, 0.12), 0 0 0 1px var(--line-1);
+  --shadow-window-focused: 0 20px 50px rgba(2, 132, 199, 0.2), 0 0 0 1.5px var(--accent);
+  --shadow-overlay: 0 24px 64px rgba(15, 23, 42, 0.18), 0 0 0 1px var(--line-2);
+
+  /* Layout Constants */
+  --taskbar-h: 48px;
+  --win-titlebar-h: 38px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-fast: 120ms var(--ease-out);
+  --trans-smooth: 180ms var(--ease-out);
+  --trans-spring: 240ms cubic-bezier(0.175, 0.885, 0.32, 1.2);
+}
+
+/* Global Clean High-Contrast Inputs */
+input[type="text"], input[type="password"], textarea {
+  transition: border-color var(--trans-fast), box-shadow var(--trans-fast), background-color var(--trans-fast);
+  color: var(--text-0);
+}
+
+input[type="text"]::placeholder, input[type="password"]::placeholder, textarea::placeholder {
+  color: var(--text-3);
+}
+
+input[type="text"]:focus, input[type="password"]:focus, textarea:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-dim) !important;
+}
+
+/* -------------------------------------------------------------
+ * 5. DARK THEME OVERRIDES (Obsidian Slate Mode)
+ * ------------------------------------------------------------- */
+[data-theme="dark"] {
+  --bg-0: #0B0F19;
+  --bg-1: #111827;
+  --bg-2: #161F30;
+  --bg-3: #1E293B;
+  --bg-4: #334155;
+  --bg-acrylic: rgba(17, 24, 39, 0.90);
+  --bg-acrylic-dark: rgba(11, 15, 25, 0.95);
+
+  --line-1: rgba(255, 255, 255, 0.10);
+  --line-2: rgba(255, 255, 255, 0.16);
+
+  --text-0: #F8FAFC;
+  --text-1: #E2E8F0;
+  --text-2: #94A3B8;
+  --text-3: #64748B;
+
+  --shadow-window: 0 16px 48px rgba(0, 0, 0, 0.45), 0 0 0 1px var(--line-1);
+  --shadow-window-focused: 0 24px 56px rgba(2, 132, 199, 0.35), 0 0 0 1.5px var(--accent);
+  --shadow-overlay: 0 28px 72px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--line-2);
+}

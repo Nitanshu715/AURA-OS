@@ -1,0 +1,259 @@
+/**
+ * AURA-OS Base Styles & Window Action Jewels
+ * Custom luminous squircle gems, specular bevels, fluid spring animations, and typography.
+ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-desktop);
+  color: var(--text-0);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+  caret-color: var(--accent);
+}
+
+::selection {
+  background-color: rgba(2, 132, 199, 0.4);
+  color: #FFFFFF;
+}
+
+input::selection, textarea::selection {
+  background-color: #BAE6FD !important;
+  color: #0284C7 !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #FFFFFF inset !important;
+  -webkit-text-fill-color: #0F172A !important;
+}
+
+/* Glass Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 9999px;
+  transition: background var(--trans-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.32);
+}
+
+/* Typography Classes */
+.font-mono, code, kbd, samp, pre, .tabular-nums {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* -------------------------------------------------------------
+ * 1. AURA WINDOW JEWEL GEMS (Our Custom 3-Button Control Cluster)
+ * ------------------------------------------------------------- */
+.window-jewels-cluster {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.window-jewel {
+  width: 13px;
+  height: 13px;
+  border-radius: var(--radius-gem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform var(--trans-spring), box-shadow var(--trans-fast), filter var(--trans-fast);
+}
+
+.window-jewel.ruby {
+  background: linear-gradient(135deg, #FF6B75 0%, #FF3340 100%);
+}
+
+.window-jewel.amber {
+  background: linear-gradient(135deg, #FFC44D 0%, #FF9900 100%);
+}
+
+.window-jewel.quantum {
+  background: linear-gradient(135deg, #33F5FF 0%, #00C8D6 100%);
+}
+
+/* Symbol Glyphs revealed on cluster hover */
+.window-jewel-glyph {
+  font-size: 8px;
+  font-weight: 800;
+  font-family: var(--font-sans);
+  color: rgba(0, 0, 0, 0.75);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity var(--trans-fast), transform var(--trans-spring);
+  pointer-events: none;
+}
+
+.window-jewels-cluster:hover .window-jewel-glyph {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.window-jewel.ruby:hover {
+  transform: scale(1.22);
+  box-shadow: 0 0 12px var(--gem-ruby-glow), inset 0 1px 0 #fff;
+  filter: brightness(1.15);
+}
+
+.window-jewel.amber:hover {
+  transform: scale(1.22);
+  box-shadow: 0 0 12px var(--gem-amber-glow), inset 0 1px 0 #fff;
+  filter: brightness(1.15);
+}
+
+.window-jewel.quantum:hover {
+  transform: scale(1.22);
+  box-shadow: 0 0 12px var(--gem-quantum-glow), inset 0 1px 0 #fff;
+  filter: brightness(1.15);
+}
+
+/* -------------------------------------------------------------
+ * 2. STATUS DOTS, BADGES, KEYCAPS
+ * ------------------------------------------------------------- */
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.status-dot.ok     { background-color: var(--ok); color: var(--ok); }
+.status-dot.warn   { background-color: var(--warn); color: var(--warn); }
+.status-dot.err    { background-color: var(--err); color: var(--err); }
+.status-dot.accent { background-color: var(--accent); color: var(--accent); }
+
+.status-dot.pulse {
+  animation: jewel-pulse 1.8s infinite ease-in-out;
+}
+
+@keyframes jewel-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 6px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  color: var(--text-2);
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-tag);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  line-height: 1;
+}
+
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 9999px;
+  background-color: var(--bg-glass-card);
+  border: 1px solid var(--glass-border);
+  color: var(--text-1);
+}
+
+.badge-pill.accent {
+  background-color: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.badge-pill.ok {
+  background-color: rgba(16, 185, 129, 0.14);
+  border-color: rgba(16, 185, 129, 0.45);
+  color: var(--ok);
+}
+
+.badge-pill.warn {
+  background-color: rgba(245, 158, 11, 0.14);
+  border-color: rgba(245, 158, 11, 0.45);
+  color: var(--warn);
+}
+
+/* Glass Buttons with Specular Bevel */
+.btn-glass {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 5px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-0);
+  background: var(--bg-glass-card);
+  background-image: var(--glass-sheen);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-btn);
+  box-shadow: var(--glass-bevel);
+  cursor: pointer;
+  transition: all var(--trans-spring);
+}
+
+.btn-glass:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--glass-border-focus);
+  box-shadow: var(--glass-bevel), 0 0 14px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+.btn-glass:active {
+  transform: translateY(0.5px);
+}
+
+.btn-primary-neon {
+  background: var(--aurora-gradient);
+  color: #021214;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 4px 16px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.btn-primary-neon:hover {
+  filter: brightness(1.12);
+  box-shadow: 0 6px 24px rgba(0, 242, 254, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transform: translateY(-1.5px) scale(1.02);
+}

@@ -1,0 +1,226 @@
+/**
+ * AURA-OS Window Manager & Chrome Styling
+ * Floating windows with edge snapping, 8px radius, snap layouts flyout, and jewel controls.
+ */
+
+#wm-desktop {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: calc(100vh - var(--taskbar-h));
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.os-window {
+  position: absolute;
+  background: var(--bg-1);
+  border: 1px solid var(--line-1);
+  border-radius: var(--radius-win);
+  box-shadow: var(--shadow-window);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  pointer-events: auto;
+  will-change: transform, opacity;
+  box-shadow: var(--top-highlight), var(--shadow-window);
+  transition: border-color var(--trans-smooth), box-shadow var(--trans-smooth), transform 220ms var(--ease-out), opacity 180ms ease;
+}
+
+.os-window.opening {
+  animation: win-open 240ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes win-open {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.os-window.focused {
+  border-color: var(--accent);
+  box-shadow: var(--top-highlight), var(--shadow-window-focused);
+  z-index: 50;
+}
+
+.os-window.unfocused {
+  opacity: 0.96;
+}
+
+.os-window.maximized {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: calc(100vh - var(--taskbar-h)) !important;
+  border-radius: 0 !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* -------------------------------------------------------------
+ * 1. TITLEBAR (36px)
+ * ------------------------------------------------------------- */
+.win-titlebar {
+  height: var(--win-titlebar-h);
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--line-1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  cursor: default;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.win-titlebar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.win-titlebar-left svg {
+  width: 15px;
+  height: 15px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.win-title-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.os-window.focused .win-title-text {
+  color: var(--text-0);
+}
+
+/* Window Action Controls Cluster */
+.win-controls-cluster {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+}
+
+.win-ctrl-btn {
+  width: 13px;
+  height: 13px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 160ms cubic-bezier(0.16, 1, 0.3, 1), filter 160ms ease, border-color 160ms ease;
+}
+
+.win-ctrl-btn:hover {
+  transform: scale(1.22);
+}
+
+.win-ctrl-btn.close    { background: var(--err); box-shadow: 0 0 6px rgba(255, 92, 108, 0.4); }
+.win-ctrl-btn.minimize { background: var(--warn); box-shadow: 0 0 6px rgba(242, 180, 65, 0.4); }
+.win-ctrl-btn.maximize { background: var(--ok); box-shadow: 0 0 6px rgba(61, 220, 151, 0.4); }
+
+.win-ctrl-glyph {
+  font-size: 8px;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--trans-fast);
+}
+
+.win-controls-cluster:hover .win-ctrl-glyph {
+  opacity: 1;
+}
+
+/* Snap Layouts Flyout */
+.snap-layouts-flyout {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 160px;
+  background: var(--bg-acrylic);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-overlay);
+  padding: 8px;
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  z-index: 200;
+}
+
+.win-ctrl-btn.maximize:hover + .snap-layouts-flyout,
+.snap-layouts-flyout:hover {
+  display: grid;
+}
+
+.snap-preview-tile {
+  height: 44px;
+  border: 1px solid var(--line-1);
+  border-radius: 4px;
+  display: flex;
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.snap-preview-tile:hover {
+  border-color: var(--accent);
+}
+
+/* -------------------------------------------------------------
+ * 2. WINDOW BODY
+ * ------------------------------------------------------------- */
+.win-body {
+  flex: 1;
+  overflow: hidden;
+  background: var(--bg-1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Resize Hit Handles */
+.win-resize-handle {
+  position: absolute;
+  z-index: 60;
+}
+
+.win-resize-handle.n  { top: -4px; left: 8px; right: 8px; height: 8px; cursor: ns-resize; }
+.win-resize-handle.s  { bottom: -4px; left: 8px; right: 8px; height: 8px; cursor: ns-resize; }
+.win-resize-handle.e  { right: -4px; top: 8px; bottom: 8px; width: 8px; cursor: ew-resize; }
+.win-resize-handle.w  { left: -4px; top: 8px; bottom: 8px; width: 8px; cursor: ew-resize; }
+.win-resize-handle.ne { top: -4px; right: -4px; width: 10px; height: 10px; cursor: nesw-resize; }
+.win-resize-handle.nw { top: -4px; left: -4px; width: 10px; height: 10px; cursor: nwse-resize; }
+.win-resize-handle.se { bottom: -4px; right: -4px; width: 10px; height: 10px; cursor: nwse-resize; }
+.win-resize-handle.sw { bottom: -4px; left: -4px; width: 10px; height: 10px; cursor: nesw-resize; }
+
+/* Snap Indicator Phantom Box */
+#snap-ghost-box {
+  position: absolute;
+  display: none;
+  background: var(--accent-dim);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-win);
+  z-index: 80;
+  pointer-events: none;
+  transition: all var(--trans-fast);
+}

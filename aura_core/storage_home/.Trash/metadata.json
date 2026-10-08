@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1790663582_sample.txt",
+    "name": "sample.txt",
+    "original_path": "D:\\AURA-OS\\aura_core\\storage_home\\Documents\\test_folder\\sample.txt",
+    "deleted_at": 1790663582
+  },
+  {
+    "id": "1790670568_sample.txt",
+    "name": "sample.txt",
+    "original_path": "d:\\AURA-OS\\aura_core\\storage_home\\Documents\\test_folder\\sample.txt",
+    "deleted_at": 1790670568
+  },
+  {
+    "id": "1790671201_sample.txt",
+    "name": "sample.txt",
+    "original_path": "d:\\AURA-OS\\aura_core\\storage_home\\Documents\\test_folder\\sample.txt",
+    "deleted_at": 1790671201
+  },
+  {
+    "id": "1790671548_sample.txt",
+    "name": "sample.txt",
+    "original_path": "d:\\AURA-OS\\aura_core\\storage_home\\Documents\\test_folder\\sample.txt",
+    "deleted_at": 1790671548
+  },
+  {
+    "id": "1790671687_sample.txt",
+    "name": "sample.txt",
+    "original_path": "d:\\AURA-OS\\aura_core\\storage_home\\Documents\\test_folder\\sample.txt",
+    "deleted_at": 1790671687
+  }
+]

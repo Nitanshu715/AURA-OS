@@ -1,0 +1,13 @@
+{
+  "theme_accent": "cyan",
+  "wallpaper": "topographic",
+  "density": "comfortable",
+  "taskbar_position": "bottom",
+  "taskbar_alignment": "center",
+  "reduced_motion": false,
+  "sound_enabled": false,
+  "time_format": "24h",
+  "timezone": "UTC",
+  "hostname_display": "AURA-OS",
+  "sandbox_default": true
+}
