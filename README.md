@@ -2,8 +2,6 @@
   <img src="AURA_OS_Logo.png" alt="AURA-OS Logo" width="320" />
 </p>
 
-# AURA-OS
-### Agentic Unified Replica Architecture Operating System
 **High-Performance Web-Native Operating System with Sandboxed Execution & Live Telemetry**
 
 ---
