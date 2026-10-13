@@ -59,3 +59,14 @@ AURA-OS implements a decoupled, hybrid micro-kernel architecture designed to bri
   - Windows 11 style 48px translucent bar with subpixel border glow.
   - Interactive Sound Wave Equalizer canvas widget connected to Task Manager.
   - Start Menu panel (620x660px) with indexed search.
+
+### 2.5 Dual-Twin Multi-Agent Replica Architecture (`aura_core/api/env.py`, `aura_core/ai_engine.py`)
+- **Primary vs. Shadow Twin Topology**:
+  - **Primary Twin (Local Host)**: Executes natively on bare-metal hardware accessing direct host compilers (`gcc`, `python`, `node`) for maximum throughput.
+  - **Shadow Twin (Cloud/Virtual Replica)**: A verified virtual fallback sandbox ready to take over environment operations if host toolchains fail prerequisite verification.
+- **Multi-Model Consensus Cluster**:
+  - **Agent Alpha (Planner)**: Analyzes user intentions, extracts capability requirements, and constructs execution dependency graphs.
+  - **Agent Gamma (Compatibility Sentinel)**: Audits host system capabilities (LaTeX compilers, Node runtimes, port bindings). If an incompatibility is detected, triggers a **Red Anomaly Alert** and executes an automated Shadow-Twin takeover.
+  - **Agent Beta (Synthesizer)**: Scaffolds full-stack workspaces (`package.json`, `src/server.js`, `src/app/index.html`) or compiles academic LaTeX research papers with KaTeX live math rendering.
+- **Failover Transition Matrix**:
+  $$\text{State}(t) = \begin{cases} \text{Primary Twin (Zoom-In)}, & \text{if } \text{Compatibility}(\mathcal{R}) = 1 \\ \text{Shadow Twin (Overtake Takeover)}, & \text{if } \text{Compatibility}(\mathcal{R}) = 0 \end{cases}$$

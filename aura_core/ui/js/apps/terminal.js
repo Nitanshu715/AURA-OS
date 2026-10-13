@@ -196,13 +196,18 @@ export const TerminalApp = {
         else if (e.key === 'ArrowDown') { e.preventDefault(); ws.send("\x1b[B"); }
         else if (e.key === 'ArrowRight') { e.preventDefault(); ws.send("\x1b[C"); }
         else if (e.key === 'ArrowLeft') { e.preventDefault(); ws.send("\x1b[D"); }
-        else if (e.ctrlKey && e.key.toLowerCase() === 'c') { e.preventDefault(); ws.send("\x03"); }
-        else if (e.ctrlKey && e.key.toLowerCase() === 'd') { e.preventDefault(); ws.send("\x04"); }
-        else if (e.ctrlKey && e.key.toLowerCase() === 'z') { e.preventDefault(); ws.send("\x1a"); }
-        else if (e.ctrlKey && e.key.toLowerCase() === 'l') { e.preventDefault(); ws.send("\x0c"); screenEl.innerHTML = ''; ensureCursor(); }
-        else if (!e.ctrlKey && !e.altKey && !e.metaKey && e.key.length === 1) {
+        else if (e.ctrlKey && e.key.toLowerCase() === 'c') {
+          // If text is selected in terminal, let native copy occur without sending SIGINT
+          const sel = window.getSelection();
+          if (sel && sel.toString().length > 0) {
+            return;
+          }
           e.preventDefault();
-          ws.send(e.key);
+          ws.send("\x03");
+        }
+        else if (e.ctrlKey && e.key.toLowerCase() === 'v') {
+          // Native paste handled or passed through
+          return;
         }
       } else if (fallbackMode) {
         // HTTP Shell buffer mode
@@ -225,10 +230,16 @@ export const TerminalApp = {
           sendHttpPrompt();
           httpBuffer = '';
         } else if (e.ctrlKey && e.key.toLowerCase() === 'c') {
+          const sel = window.getSelection();
+          if (sel && sel.toString().length > 0) {
+            return;
+          }
           e.preventDefault();
           appendANSI("^C\r\n");
           httpBuffer = '';
           sendHttpPrompt();
+        } else if (e.ctrlKey && e.key.toLowerCase() === 'v') {
+          return;
         } else if (!e.ctrlKey && !e.altKey && !e.metaKey && e.key.length === 1) {
           e.preventDefault();
           httpBuffer += e.key;
@@ -240,15 +251,7 @@ export const TerminalApp = {
     };
 
     screenEl.addEventListener('keydown', handleKey);
-    el.addEventListener('keydown', handleKey);
     el.addEventListener('click', () => screenEl.focus());
-    window.addEventListener('keydown', (e) => {
-      // If no other input/textarea has focus, redirect keyboard directly to active terminal
-      const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
-      if (activeTag !== 'input' && activeTag !== 'textarea') {
-        handleKey(e);
-      }
-    });
 
     connect();
 

@@ -26,6 +26,7 @@ import { EditorApp } from './apps/editor.js';
 import { AgentApp } from './apps/agent.js';
 import { MemoryApp } from './apps/memory.js';
 import { SettingsApp } from './apps/settings.js';
+import { DualTwinApp } from './apps/twin.js';
 
 const appsRegistry = {
   files: FilesApp,
@@ -39,7 +40,8 @@ const appsRegistry = {
   editor: EditorApp,
   agent: AgentApp,
   memory: MemoryApp,
-  settings: SettingsApp
+  settings: SettingsApp,
+  twin: DualTwinApp
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -55,9 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   new BootController(() => {
-    // Open native Terminal window so desktop apps are immediately active and interactive
-    setTimeout(() => {
-      wm.openApp('terminal');
-    }, 300);
+    // OS Shell loaded cleanly. Leave desktop ready for user actions.
   });
 });

@@ -424,20 +424,42 @@ def handle_term_ws(client):
                         if os.path.exists(target_bin) or os.path.exists(target_bin + '.exe'):
                             exec_cmd = target_bin if os.path.exists(target_bin) else (target_bin + '.exe')
 
-                    res = subprocess.run(
-                        exec_cmd,
-                        cwd=curr_dir,
-                        shell=True,
-                        capture_output=True,
-                        text=True,
-                        timeout=15
-                    )
-                    if res.stdout:
-                        client.send(res.stdout.replace('\n', '\r\n'))
-                    if res.stderr:
-                        client.send(f"\x1b[31m{res.stderr.replace(chr(10), chr(13)+chr(10))}\x1b[0m")
+                    # If command is a server or watcher (e.g. npm start, node src/server.js), run in background daemon thread
+                    is_server_cmd = any(k in exec_cmd.lower() for k in ['npm start', 'node src/', 'node server', 'npm run dev'])
+                    if is_server_cmd:
+                        client.send(f"\x1b[36m[AURA Dev Daemon]: Spawning {exec_cmd} in background...\x1b[0m\r\n")
+                        bg_proc = subprocess.Popen(
+                            exec_cmd,
+                            cwd=curr_dir,
+                            shell=True,
+                            stdout=subprocess.PIPE,
+                            stderr=subprocess.PIPE,
+                            text=True
+                        )
+                        def stream_bg():
+                            try:
+                                for line in bg_proc.stdout:
+                                    if not client.is_closed:
+                                        client.send(line.replace('\n', '\r\n'))
+                            except Exception: pass
+                        threading.Thread(target=stream_bg, daemon=True).start()
+                        time.sleep(0.5)
+                        client.send("\x1b[32m[+] Server initialized. Access via Browser at http://localhost:3000\x1b[0m\r\n")
+                    else:
+                        res = subprocess.run(
+                            exec_cmd,
+                            cwd=curr_dir,
+                            shell=True,
+                            capture_output=True,
+                            text=True,
+                            timeout=60
+                        )
+                        if res.stdout:
+                            client.send(res.stdout.replace('\n', '\r\n'))
+                        if res.stderr:
+                            client.send(f"\x1b[31m{res.stderr.replace(chr(10), chr(13)+chr(10))}\x1b[0m")
                 except subprocess.TimeoutExpired:
-                    client.send("\x1b[31mCommand timed out (15s limit).\x1b[0m\r\n")
+                    client.send("\x1b[31mCommand timed out (60s limit).\x1b[0m\r\n")
                 except Exception as ex:
                     client.send(f"\x1b[31m{str(ex)}\x1b[0m\r\n")
 

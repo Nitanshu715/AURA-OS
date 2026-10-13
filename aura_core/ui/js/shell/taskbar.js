@@ -148,12 +148,13 @@ export class TaskbarController {
       files: { name: 'File Explorer', icon: 'folder' },
       terminal: { name: 'Terminal', icon: 'terminal' },
       taskmgr: { name: 'Task Manager', icon: 'monitor' },
+      twin: { name: 'Dual-Twin Studio', icon: 'twin' },
       browser: { name: 'Browser', icon: 'globe' },
       snipping: { name: 'Snipping Tool', icon: 'camera' },
       recorder: { name: 'Recorder', icon: 'video' },
       photos: { name: 'Photos', icon: 'image' },
       media: { name: 'Media Player', icon: 'music' },
-      editor: { name: 'Text Editor', icon: 'file-text' },
+      editor: { name: 'LaTeX Studio', icon: 'file-text' },
       agent: { name: 'AURA Copilot', icon: 'agent' },
       settings: { name: 'Settings', icon: 'settings' }
     };

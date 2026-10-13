@@ -32,11 +32,21 @@ export const api = {
 
   async get(path) {
     const res = await this.request(path);
-    return res.json();
+    const text = await res.text();
+    try {
+      return JSON.parse(text);
+    } catch (_) {
+      return { ok: res.ok, status: res.status, raw: text };
+    }
   },
 
   async post(path, body) {
     const res = await this.request(path, { method: 'POST', body });
-    return res.json();
+    const text = await res.text();
+    try {
+      return JSON.parse(text);
+    } catch (_) {
+      return { ok: res.ok, status: res.status, raw: text };
+    }
   }
 };

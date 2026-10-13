@@ -25,17 +25,36 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   user-select: none;
+  -webkit-user-select: none;
   caret-color: var(--accent);
 }
 
+/* Allow text selection, copying, and clipboard interactions across all windows and editors */
+.window-body,
+.win-body,
+.terminal-screen,
+.editor-code,
+.agent-stream,
+.chat-stream,
+input,
+textarea,
+pre,
+code,
+p,
+span,
+div[contenteditable="true"] {
+  user-select: text !important;
+  -webkit-user-select: text !important;
+}
+
 ::selection {
-  background-color: rgba(2, 132, 199, 0.4);
+  background-color: rgba(2, 132, 199, 0.45);
   color: #FFFFFF;
 }
 
 input::selection, textarea::selection {
-  background-color: #BAE6FD !important;
-  color: #0284C7 !important;
+  background-color: #0284C7 !important;
+  color: #FFFFFF !important;
 }
 
 input:-webkit-autofill,

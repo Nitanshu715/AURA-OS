@@ -12,6 +12,8 @@ import json
 import os
 import sys
 import time
+import socket
+import subprocess
 import urllib.parse
 import mimetypes
 
@@ -35,6 +37,7 @@ import api.settings as settings_api
 import api.auth as auth_api
 import api.events as events_api
 import api.net as net_api
+import api.env as env_api
 import ws as ws_server
 
 PORT = int(os.environ.get("AURA_PORT", 8888))
@@ -43,6 +46,9 @@ UI_DIR = os.path.join(os.path.dirname(__file__), "ui")
 memory = MemoryDaemon()
 bridge = SystemBridge()
 ai = AIEngine(memory, bridge)
+
+# Persistent background dev server process instance
+ACTIVE_DEV_SERVER = None
 
 class AuraThreadingServer(http.server.ThreadingHTTPServer):
     daemon_threads = True
@@ -202,6 +208,32 @@ class AuraHTTPHandler(http.server.SimpleHTTPRequestHandler):
             if path == "/api/services":
                 return self.send_json(proc_api.get_services())
 
+            # Dev Server Health & Background Process Status
+            if path == "/api/dev/status":
+                target_port = int(query.get("port", ["3000"])[0])
+                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                sock.settimeout(1.0)
+                is_open = False
+                try:
+                    res = sock.connect_ex(("127.0.0.1", target_port))
+                    is_open = (res == 0)
+                except Exception:
+                    pass
+                finally:
+                    sock.close()
+
+                # Check if dev server process is alive
+                is_alive = False
+                if ACTIVE_DEV_SERVER and ACTIVE_DEV_SERVER.poll() is None:
+                    is_alive = True
+
+                return self.send_json({
+                    "ok": True,
+                    "port": target_port,
+                    "is_listening": is_open,
+                    "process_alive": is_alive
+                })
+
             if path == "/api/logs/sources":
                 return self.send_json(proc_api.get_log_sources())
 
@@ -295,6 +327,13 @@ class AuraHTTPHandler(http.server.SimpleHTTPRequestHandler):
             if path == "/api/settings":
                 return self.send_json(settings_api.get_settings())
 
+            if path == "/api/env/templates":
+                return self.send_json(env_api.list_templates())
+
+            if path == "/api/env/check":
+                tmpl_id = query.get("template", ["latex-research"])[0]
+                return self.send_json(env_api.check_compatibility(tmpl_id))
+
             if path == "/api/auth/status":
                 token = self.headers.get("Authorization", "").replace("Bearer ", "")
                 return self.send_json({
@@ -385,6 +424,36 @@ class AuraHTTPHandler(http.server.SimpleHTTPRequestHandler):
                     res = {"reply": f"[ERROR] Failed to process instruction: {str(e)}", "action": "error"}
                 return self.send_json(res)
 
+            # Dual-Twin Multi-Agent Orchestration Pipeline
+            if path == "/api/ai/pipeline":
+                task_msg = req_json.get("task", "")
+                env_type = req_json.get("environment")
+                try:
+                    res = ai.run_multi_agent_pipeline(task_msg, env_type)
+                except Exception as e:
+                    res = {"ok": False, "error": str(e)}
+                return self.send_json(res)
+
+            # Dual-Twin Environment Scaffolding
+            if path == "/api/env/scaffold":
+                template_id = req_json.get("template", "latex-research")
+                folder = req_json.get("folder", "")
+                try:
+                    res = env_api.scaffold_template(template_id, folder)
+                except Exception as e:
+                    res = {"ok": False, "error": str(e)}
+                return self.send_json(res)
+
+            # Direct Real PDF Compiler for Research Papers
+            if path == "/api/latex/pdf":
+                content = req_json.get("content", "")
+                filename = req_json.get("filename", "Research_Paper.pdf")
+                try:
+                    res = env_api.compile_latex_to_pdf(content, filename)
+                except Exception as e:
+                    res = {"ok": False, "error": str(e)}
+                return self.send_json(res)
+
             # -------------------------------------------------------------
             # Authentication & Settings
             # -------------------------------------------------------------
@@ -411,6 +480,57 @@ class AuraHTTPHandler(http.server.SimpleHTTPRequestHandler):
                 if msg:
                     proc_api.log_system_event(cat, msg)
                 return self.send_json({"ok": True})
+
+            # -------------------------------------------------------------
+            # Persistent Development Server Process Manager
+            # -------------------------------------------------------------
+            if path == "/api/dev/start":
+                global ACTIVE_DEV_SERVER
+                cmd = req_json.get("command", "node src/server.js").strip()
+                cwd_rel = req_json.get("cwd", "Documents/Fullstack_App")
+                storage_root = os.path.abspath(fs_api.AURA_HOME)
+                target_cwd = os.path.abspath(os.path.join(storage_root, cwd_rel.lstrip("/\\")))
+                if not os.path.exists(target_cwd):
+                    os.makedirs(target_cwd, exist_ok=True)
+
+                if ACTIVE_DEV_SERVER and ACTIVE_DEV_SERVER.poll() is None:
+                    try:
+                        ACTIVE_DEV_SERVER.terminate()
+                        ACTIVE_DEV_SERVER.wait(timeout=2)
+                    except Exception:
+                        try: ACTIVE_DEV_SERVER.kill()
+                        except Exception: pass
+
+                try:
+                    ACTIVE_DEV_SERVER = subprocess.Popen(
+                        cmd,
+                        cwd=target_cwd,
+                        shell=True,
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.PIPE,
+                        text=True
+                    )
+                    time.sleep(0.5)
+                    return self.send_json({
+                        "ok": True,
+                        "pid": ACTIVE_DEV_SERVER.pid,
+                        "status": "running",
+                        "command": cmd,
+                        "cwd": target_cwd
+                    })
+                except Exception as ex:
+                    return self.send_json({"ok": False, "error": str(ex)}, 500)
+
+            if path == "/api/dev/stop":
+                if ACTIVE_DEV_SERVER and ACTIVE_DEV_SERVER.poll() is None:
+                    try:
+                        ACTIVE_DEV_SERVER.terminate()
+                        ACTIVE_DEV_SERVER.wait(timeout=2)
+                    except Exception:
+                        try: ACTIVE_DEV_SERVER.kill()
+                        except Exception: pass
+                    ACTIVE_DEV_SERVER = None
+                return self.send_json({"ok": True, "status": "stopped"})
 
             # -------------------------------------------------------------
             # Terminal HTTP RPC Fallback (Fallback when WebSocket upgrade is blocked)

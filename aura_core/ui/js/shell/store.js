@@ -26,7 +26,7 @@ class OSStore {
       healthChecks: [],
       processes: [],
       services: [],
-      pinnedApps: ['files', 'terminal', 'taskmgr', 'browser', 'snipping', 'editor', 'agent', 'settings'],
+      pinnedApps: ['files', 'terminal', 'taskmgr', 'twin', 'browser', 'snipping', 'editor', 'agent', 'settings'],
       runningWindows: [],
       focusedWindowId: null,
       currentTheme: {

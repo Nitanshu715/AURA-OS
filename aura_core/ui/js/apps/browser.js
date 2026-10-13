@@ -33,6 +33,14 @@ export const BrowserApp = {
     let loading = false;
     let searchResults = [];
 
+    const initUrl = (ctx.params && (ctx.params.url || ctx.params.initialUrl)) || '';
+    if (initUrl) {
+      tabs[0].url = initUrl;
+      tabs[0].view = 'webview';
+      tabs[0].title = initUrl.replace(/^https?:\/\//, '');
+      tabs[0].history = [{ view: 'webview', title: tabs[0].title, query: '', mode: 'all', url: initUrl }];
+    }
+
     const getActiveTab = () => tabs.find(t => t.id === activeTabId) || tabs[0];
 
     const pushTabHistory = (tab, state) => {
@@ -385,7 +393,7 @@ export const BrowserApp = {
               </div>
             ` : `
               <!-- LIVE WEBVIEW IFRAME -->
-              <iframe class="browser-webview" id="br-webview-${activeTab.id}" src="/api/proxy?url=${encodeURIComponent(activeTab.url)}" allow="fullscreen; clipboard-read; clipboard-write; camera; microphone; autoplay; encrypted-media" style="width:100%; height:100%; border:none; background:#FFF;"></iframe>
+              <iframe class="browser-webview" id="br-webview-${activeTab.id}" src="${(activeTab.url.includes('localhost') || activeTab.url.includes('127.0.0.1')) ? activeTab.url : ('/api/proxy?url=' + encodeURIComponent(activeTab.url))}" allow="fullscreen; clipboard-read; clipboard-write; camera; microphone; autoplay; encrypted-media" style="width:100%; height:100%; border:none; background:#FFF;"></iframe>
             `}
           </div>
         </div>

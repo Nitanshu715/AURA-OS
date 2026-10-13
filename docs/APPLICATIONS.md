@@ -10,7 +10,8 @@ AURA-OS includes 14 integrated system applications and productivity modules, all
 | **Multi-Tab Web Browser** | `browser` | Start Menu, Taskbar | Multi-tab browsing with per-tab history stacks, forward/back navigation, and dynamic reverse proxy engine bypassing CORS/X-Frame-Options. |
 | **Task Manager & Monitor** | `monitor` | Tray Equalizer, Start Menu | Real-time CPU, RAM, and Disk telemetry graphs, process list inspect, and process signal termination (SIGTERM, SIGKILL). |
 | **Hierarchical File Explorer**| `files` | Desktop Icon, Start Menu | Tree directory navigation, file upload/download, folder creation, rename, and two-stage trash recovery. |
-| **Monaco Code Studio** | `editor` | Start Menu | Full-featured code editor with syntax highlighting, line numbering, multi-file editing, and direct save integration. |
+| **Monaco & LaTeX Studio** | `editor` | Start Menu, Desktop Icon | Full-featured LaTeX & code editor with split-pane live KaTeX math typography preview, BibTeX reference compilation, and direct save integration. |
+| **Dual-Twin Studio** | `twin` | Start Menu, Desktop Icon | Multi-agent orchestration engine (Alpha Planner, Beta Synthesizer, Gamma Sentinel) with live compatibility scanning, zoom-in launch, and red overtake takeover animations. |
 | **Paint Studio** | `paint` | Start Menu | HTML5 2D Canvas drawing tool with brushes, color picker, geometric primitives, and PNG export. |
 | **Media Player** | `media` | Start Menu | Audio and video player supporting HTTP 206 Partial Content range requests for seamless timeline seeking. |
 | **Clock, Calendar & Schedules**| `calendar`| Tray Clock, Start Menu | Dynamic interactive monthly calendar with persistent local event schedules and reminders store. |

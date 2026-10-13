@@ -44,6 +44,10 @@ def fetch_proxy_url(target_url):
         target_url = 'https://' + target_url
 
     parsed = urllib.parse.urlparse(target_url)
+    if not parsed.path:
+        target_url = target_url + '/'
+        parsed = urllib.parse.urlparse(target_url)
+
     if is_private_ip(parsed.hostname):
         return {
             "ok": False,
@@ -310,31 +314,63 @@ def fetch_proxy_url(target_url):
             "content_type": "text/html"
         }
     except Exception as e:
-        error_html = f"""
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <meta charset="utf-8">
-          <style>
-            body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0A0C10; color: #F1F3F7; padding: 40px; line-height: 1.5; }}
-            .card {{ background: #151A23; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 24px; max-width: 600px; margin: 0 auto; }}
-            h2 {{ color: #2DD4E0; margin-top: 0; }}
-            p {{ color: #B4BBC7; font-size: 13px; }}
-            .btn {{ display: inline-block; padding: 8px 16px; background: #2DD4E0; color: #021214; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 12px; margin-top: 12px; }}
-            .err-box {{ background: rgba(255, 92, 108, 0.1); border: 1px solid #FF5C6C; color: #FF5C6C; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 12px; margin: 16px 0; }}
-          </style>
-        </head>
-        <body>
-          <div class="card">
-            <h2>Connection Notice</h2>
-            <p>Direct frame proxying encountered an issue reaching <strong>{target_url}</strong>.</p>
-            <div class="err-box">{str(e)}</div>
-            <p>You can also launch this target directly in your host browser:</p>
-            <a class="btn" href="{target_url}" target="_blank">Open in Host Browser</a>
-          </div>
-        </body>
-        </html>
-        """
+        is_local = "localhost" in target_url or "127.0.0.1" in target_url
+        if is_local:
+            error_html = f"""
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <meta charset="utf-8">
+              <meta http-equiv="refresh" content="3">
+              <style>
+                body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0F172A; color: #F1F5F9; padding: 40px; line-height: 1.5; }}
+                .card {{ background: #1E293B; border: 1px solid #334155; border-radius: 12px; padding: 28px; max-width: 640px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }}
+                h2 {{ color: #38BDF8; margin-top: 0; font-size: 18px; }}
+                p {{ color: #94A3B8; font-size: 13px; }}
+                .spinner {{ display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(56,189,248,0.25); border-top-color: #38BDF8; border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 8px; }}
+                @keyframes spin {{ to {{ transform: rotate(360deg); }} }}
+                .code-box {{ background: #0F172A; border: 1px solid #334155; color: #38BDF8; padding: 12px 16px; border-radius: 8px; font-family: monospace; font-size: 12.5px; margin: 16px 0; }}
+                .btn {{ display: inline-block; padding: 8px 16px; background: #38BDF8; color: #0F172A; text-decoration: none; border-radius: 6px; font-weight: 700; font-size: 12px; margin-top: 8px; }}
+              </style>
+            </head>
+            <body>
+              <div class="card">
+                <h2><span class="spinner"></span>Connecting to Local Server</h2>
+                <p>Waiting for the application to respond at <strong>{target_url}</strong>. Auto-reloading every 3 seconds...</p>
+                <div class="code-box">Backend Status: Initializing process on port 3000</div>
+                <p>If not yet running, use <strong>AURA Copilot</strong> or the terminal to start the server:</p>
+                <div class="code-box">node src/server.js</div>
+                <a class="btn" href="javascript:location.reload()">Retry Now</a>
+              </div>
+            </body>
+            </html>
+            """
+        else:
+            error_html = f"""
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <meta charset="utf-8">
+              <style>
+                body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0A0C10; color: #F1F3F7; padding: 40px; line-height: 1.5; }}
+                .card {{ background: #151A23; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 24px; max-width: 600px; margin: 0 auto; }}
+                h2 {{ color: #2DD4E0; margin-top: 0; }}
+                p {{ color: #B4BBC7; font-size: 13px; }}
+                .btn {{ display: inline-block; padding: 8px 16px; background: #2DD4E0; color: #021214; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 12px; margin-top: 12px; }}
+                .err-box {{ background: rgba(255, 92, 108, 0.1); border: 1px solid #FF5C6C; color: #FF5C6C; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 12px; margin: 16px 0; }}
+              </style>
+            </head>
+            <body>
+              <div class="card">
+                <h2>Connection Notice</h2>
+                <p>Direct frame proxying encountered an issue reaching <strong>{target_url}</strong>.</p>
+                <div class="err-box">{str(e)}</div>
+                <p>You can also launch this target directly in your host browser:</p>
+                <a class="btn" href="{target_url}" target="_blank">Open in Host Browser</a>
+              </div>
+            </body>
+            </html>
+            """
         return {
             "ok": False,
             "status": 200,

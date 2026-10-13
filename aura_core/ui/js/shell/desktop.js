@@ -187,6 +187,8 @@ export class DesktopController {
       { id: 'downloads', name: 'Downloads', icon: 'download', tileClass: 'tile-memory', action: () => this.wm.openApp('files', { path: '~/Downloads' }) },
       { id: 'browser_icon', name: 'Browser', icon: 'globe', tileClass: 'tile-browser', action: () => this.wm.openApp('browser') },
       { id: 'pictures', name: 'Pictures', icon: 'image', tileClass: 'tile-photos', action: () => this.wm.openApp('photos') },
+      { id: 'twin_icon', name: 'Dual-Twin Studio', icon: 'monitor', tileClass: 'tile-monitor', action: () => this.wm.openApp('twin') },
+      { id: 'latex_icon', name: 'LaTeX Research', icon: 'file-text', tileClass: 'tile-editor', action: () => this.wm.openApp('editor', { path: '~/Documents/Research_Paper/main.tex' }) },
       { id: 'terminal_icon', name: 'Terminal', icon: 'terminal', tileClass: 'tile-terminal', action: () => this.wm.openApp('terminal') },
       { id: 'trash_icon', name: 'Recycle Bin', icon: 'trash-2', tileClass: 'tile-trash', action: () => this.wm.openApp('files', { path: '~/.Trash' }) }
     ];

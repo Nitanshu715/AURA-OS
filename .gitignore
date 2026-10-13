@@ -32,3 +32,9 @@ desktop.ini
 *.cert
 *.id_rsa
 secrets/
+
+# Local User Storage & Runtime Output
+aura_core/storage_home/Documents/Fullstack_App/
+aura_core/storage_home/Documents/Research_Paper/
+aura_core/storage_home/Downloads/
+AURA_OS_Logo_original.png

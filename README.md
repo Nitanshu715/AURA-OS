@@ -65,23 +65,31 @@ AURA-OS eliminates the traditional compromise between heavy, resource-intensive 
 - **Window Management Engine**: Dynamic z-index priority queue arbitration, boundary collision snapping (split left, split right, maximize), and minimization to taskbar.
 - **Windows 11 Inspired Taskbar**: 48px acrylic translucent dock with centered app icons, real-time audio wave equalizer, quick settings flyout, and indexed start menu.
 
-### 5. Multi-Stage UEFI Diagnostic Bootloader
-- **Authentic Startup Sequence**: Paced across 2.8 seconds displaying real-time ACPI hardware probing, physical RAM allocation verification, and storage overlay mounting.
+### 5. Dual-Twin Multi-Agent Replica Architecture
+- **Tri-Agent Consensus Cluster**: Alpha Planner (Task decomposition), Gamma Sentinel (Compatibility audit & anomaly detection), and Beta Synthesizer (Artifact & environment provisioning).
+- **Autonomous Takeover & Zoom Transitions**:
+  - **Zoom-In Launch**: Smooth 1.06x camera scaling when system prerequisites are 100% verified on the Primary Host.
+  - **Red Anomaly & Shadow-Twin Overtake**: If required binaries are missing (e.g. pdflatex or node), the audit ring switches to pulsing crimson red, shakes the stage, and initiates an automated takeover using the verified Shadow-Twin Cloud Replica.
+- **Ready-to-Use Workspaces**: Built-in templates for academic LaTeX research papers (IEEE style with live KaTeX math preview) and full-stack web applications (`package.json`, Express, `src/app`).
+
+### 6. Multi-Stage UEFI Diagnostic Bootloader
+- **Authentic Startup Sequence**: Paced across 3.4 seconds displaying real-time ACPI hardware probing, physical RAM allocation verification, and storage overlay mounting.
 - **Fluent Orbit Indicator**: Windows 11 style multi-dot circular orbit spinner with gentle cinematic scale-up transition into desktop.
 
 ---
 
 ## Applications Ecosystem
 
-AURA-OS includes 14 fully functional, integrated system applications:
+AURA-OS includes 15 fully functional, integrated system applications:
 
 | Application | Identifier | Launch Shortcut | Key Capabilities |
 | :--- | :--- | :--- | :--- |
 | **Interactive Terminal** | `terminal` | `Ctrl+Alt+T`, Start Menu | VT100/ANSI PTY console with compiler support and HTTP fallback. |
 | **Multi-Tab Web Browser** | `browser` | Start Menu, Taskbar | Multi-tab browsing with live bypass proxy engine. |
+| **Dual-Twin Studio** | `twin` | Desktop Icon, Start Menu | Multi-agent orchestration engine with live compatibility scanning, zoom-in launch, and red overtake takeover animations. |
+| **LaTeX & Code Studio** | `editor` | Desktop Icon, Start Menu | Document & code editor with split-pane live KaTeX math formula rendering, BibTeX citations, and PDF build chain integration. |
 | **Task Manager & Monitor** | `monitor` | Tray Equalizer, Start Menu | Real-time CPU, RAM, and Disk graphs with process signal termination. |
 | **Hierarchical File Explorer**| `files` | Desktop Icon, Start Menu | File tree navigation, upload/download, and two-stage trash recovery. |
-| **Monaco Code Studio** | `editor` | Start Menu | Code editor with syntax highlighting and direct filesystem save. |
 | **Paint Studio** | `paint` | Start Menu | HTML5 2D Canvas drawing tool with brushes and PNG export. |
 | **Media Player** | `media` | Start Menu | Audio and video player supporting HTTP 206 Partial Content range streaming. |
 | **Clock & Calendar** | `calendar` | Tray Clock, Start Menu | Interactive calendar with local event schedules store. |

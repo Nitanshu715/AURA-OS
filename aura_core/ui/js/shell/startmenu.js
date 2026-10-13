@@ -108,7 +108,8 @@ export class StartMenuController {
       { id: 'recorder', name: 'Recorder', icon: 'video', tileClass: 'tile-recorder' },
       { id: 'photos', name: 'Photos', icon: 'image', tileClass: 'tile-photos' },
       { id: 'media', name: 'Media Player', icon: 'music', tileClass: 'tile-media' },
-      { id: 'editor', name: 'Text Editor', icon: 'file-text', tileClass: 'tile-editor' },
+      { id: 'twin', name: 'Dual-Twin Studio', icon: 'monitor', tileClass: 'tile-taskmgr' },
+      { id: 'editor', name: 'LaTeX Studio', icon: 'file-text', tileClass: 'tile-editor' },
       { id: 'agent', name: 'AURA Copilot', icon: 'agent', tileClass: 'tile-agent' },
       { id: 'memory', name: 'Memory DB', icon: 'memory', tileClass: 'tile-memory' },
       { id: 'settings', name: 'Settings', icon: 'settings', tileClass: 'tile-settings' }
