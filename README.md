@@ -8,6 +8,18 @@
 
 ---
 
+## Official System Presentation & Architectural Walkthrough
+
+<p align="center">
+  <video src="AURA_OS_Official_Walkthrough.mp4" controls="controls" width="100%" poster="screenshots/05_desktop_environment_overview.png">
+    Your browser does not support the video tag. View the walkthrough directly: <a href="AURA_OS_Official_Walkthrough.mp4">AURA_OS_Official_Walkthrough.mp4</a>
+  </video>
+  <br/>
+  <em>Official 1080p Executive Walkthrough: Boot sequence, 5-Core DAG consensus matrix, live Node.js microservice compilation, interactive PTY terminal, and self-healing telemetry.</em>
+</p>
+
+---
+
 ## 1. Executive Summary & Vision
 
 **AURA-OS** is an application-defined, web-engineered operating system designed to deliver a zero-latency, production-grade desktop computing environment directly inside modern web browsers. By pairing a lightweight, zero-dependency Python Core kernel backend with an ultra-responsive 60+ FPS hardware-accelerated desktop compositor, AURA-OS bridges host operating system primitives (POSIX PTY, process managers, host compilers, and real telemetry) directly to modern browser runtimes without hypervisor bloat or virtualization driver lag.
