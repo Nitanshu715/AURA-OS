@@ -1,22 +1,10 @@
 <p align="center">
-  <img src="AURA_OS_Logo.png" alt="AURA-OS Logo" width="380" />
+  <img src="AURA_OS_Walkthrough.gif" alt="AURA-OS Walkthrough" width="100%" />
 </p>
 
 # AURA-OS
 ### Agentic Unified Replica Architecture Operating System
 **High-Performance Web-Native Operating System with Sandboxed Execution, Dual-Twin Replica Consensus, and 5-Core Autonomous Multi-Agent Topology**
-
----
-
-## System Walkthrough & Overview
-
-<p align="center">
-  <a href="https://raw.githubusercontent.com/Nitanshu715/AURA-OS/main/AURA_OS_Official_Walkthrough.mp4">
-    <img src="screenshots/05_desktop_environment_overview.png" alt="Watch Walkthrough Video" width="950" />
-  </a>
-  <br/>
-  <strong><a href="https://raw.githubusercontent.com/Nitanshu715/AURA-OS/main/AURA_OS_Official_Walkthrough.mp4">Click to Watch / Download Walkthrough Video (MP4)</a></strong>
-</p>
 
 ---
 
