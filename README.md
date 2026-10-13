@@ -8,14 +8,14 @@
 
 ---
 
-## Official System Presentation & Architectural Walkthrough
+## System Walkthrough & Overview
 
 <p align="center">
-  <video src="AURA_OS_Official_Walkthrough.mp4" controls="controls" width="100%" poster="screenshots/05_desktop_environment_overview.png">
-    Your browser does not support the video tag. View the walkthrough directly: <a href="AURA_OS_Official_Walkthrough.mp4">AURA_OS_Official_Walkthrough.mp4</a>
-  </video>
+  <a href="https://raw.githubusercontent.com/Nitanshu715/AURA-OS/main/AURA_OS_Official_Walkthrough.mp4">
+    <img src="screenshots/05_desktop_environment_overview.png" alt="Watch Walkthrough Video" width="950" />
+  </a>
   <br/>
-  <em>Official 1080p Executive Walkthrough: Boot sequence, 5-Core DAG consensus matrix, live Node.js microservice compilation, interactive PTY terminal, and self-healing telemetry.</em>
+  <strong><a href="https://raw.githubusercontent.com/Nitanshu715/AURA-OS/main/AURA_OS_Official_Walkthrough.mp4">Click to Watch / Download Walkthrough Video (MP4)</a></strong>
 </p>
 
 ---
