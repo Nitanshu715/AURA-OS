@@ -191,16 +191,16 @@ def generate_video(output_path="AURA_OS_Official_Walkthrough.mp4"):
     ])
     slides.append((c1, 4.0))
 
-    # 2. Bootloader
-    c2, d2 = create_base_canvas("Multi-Stage Diagnostic Bootloader", "UEFI ACPI Hardware Probing & Memory Allocation", "BOOT SEQUENCE")
-    place_screenshot(c2, "screenshots/09_uefi_bootloader_sequence.png", (40, 115, 1330, 990))
+    # 2. System Architecture Flow Map
+    c2, d2 = create_base_canvas("Interactive System Architecture Flow Map", "Subsystem Interconnects, Sandboxed Runtime & PTY Multiplexer", "ARCHITECTURE MAP")
+    place_screenshot(c2, "screenshots/07_task_manager_telemetry.png", (40, 115, 1330, 990))
     draw_info_panel(c2, d2, [
-        {"title": "UEFI ACPI Hardware Scan", "desc": "Probes physical CPU cores, RAM layout, and storage devices during authentic cold boot.", "color": (56, 189, 248, 255), "badge": "STAGE 1"},
-        {"title": "Physical RAM Allocation", "desc": "Verifies memory segments and reserves sandboxed overlay pages in under 2.8 seconds.", "color": (16, 185, 129, 255), "badge": "STAGE 2"},
-        {"title": "Fluent Orbit Spinner", "desc": "Smooth Windows 11 style circular orbital loader with seamless camera transition into desktop.", "color": (129, 140, 248, 255), "badge": "STAGE 3"},
-        {"title": "Zero Virtualization Lag", "desc": "Boots instantly without hypervisor driver capture or mouse trap bottlenecks.", "color": (245, 158, 11, 255), "badge": "ZERO LAG"}
+        {"title": "Core Subsystem Mapping", "desc": "Live architectural inspector mapping server.py, PTY multiplexer, and SQLite memory store.", "color": (56, 189, 248, 255), "badge": "MICROKERNEL"},
+        {"title": "Isolated User Space Sandbox", "desc": "Documents, Downloads, and app containment keeping user data strictly confined.", "color": (16, 185, 129, 255), "badge": "SECURITY"},
+        {"title": "Interactive PTY Multiplexer", "desc": "Bidirectional character stream routing with non-blocking PTY master/slave links.", "color": (129, 140, 248, 255), "badge": "PTY BRIDGE"},
+        {"title": "Zero Virtualization Lag", "desc": "Direct bare-metal host execution eliminating hypervisor driver capture traps.", "color": (245, 158, 11, 255), "badge": "PERFORMANCE"}
     ])
-    slides.append((c2, 4.0))
+    slides.append((c2, 4.5))
 
     # 3. System Architecture Diagram
     diag1 = {
