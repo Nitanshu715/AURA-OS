@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="AURA_OS_Logo.png" alt="AURA-OS Logo" width="360" />
+  <img src="AURA_OS_Logo.png" alt="AURA-OS Logo" width="380" />
 </p>
 
 # AURA-OS
@@ -8,7 +8,7 @@
 
 ---
 
-## Executive Overview
+## 1. Executive Summary & Vision
 
 **AURA-OS** is an application-defined, web-engineered operating system designed to deliver a zero-latency, production-grade desktop computing environment directly inside modern web browsers. By pairing a lightweight, zero-dependency Python Core kernel backend with an ultra-responsive 60+ FPS hardware-accelerated desktop compositor, AURA-OS bridges host operating system primitives (POSIX PTY, process managers, host compilers, and real telemetry) directly to modern browser runtimes without hypervisor bloat or virtualization driver lag.
 
@@ -16,7 +16,99 @@ AURA-OS eliminates the traditional compromise between heavy, resource-intensive 
 
 ---
 
-## Architectural Topology & Data Flow
+## 2. Complete Visual Architecture Gallery
+
+### 2.1 Dual-Twin Multi-Agent Studio
+<p align="center">
+  <img src="screenshots/01_dual_twin_studio_orchestrator.png" alt="Dual-Twin Multi-Agent Studio" width="950" />
+  <br/>
+  <em>Dual-Twin Studio: 5-Core DAG Consensus Matrix (Alpha, Gamma, Beta, Delta, Epsilon), live latency telemetry, and autonomous self-healing recovery sequence.</em>
+</p>
+
+---
+
+### 2.2 Academic Research Paper & Studio IDE
+<p align="center">
+  <img src="screenshots/02_latex_studio_academic_editor.png" alt="Academic LaTeX Studio IDE" width="950" />
+  <br/>
+  <em>Studio IDE: Split-pane editing, KaTeX live math rendering, clean black-and-white academic typography, and 1-click native binary PDF compilation saving to <code>~/Downloads/</code>.</em>
+</p>
+
+---
+
+### 2.3 Live Full-Stack Web Application Runtime
+<p align="center">
+  <img src="screenshots/03_fullstack_web_app_browser.png" alt="Full-Stack Web App Runtime" width="950" />
+  <br/>
+  <em>Multi-Tab Desktop Browser: Live Node.js HTTP backend running on port 3000 inside the AURA-OS sandbox with real-time REST API verification.</em>
+</p>
+
+---
+
+### 2.4 AURA Copilot Neural AI Assistant
+<p align="center">
+  <img src="screenshots/04_aura_copilot_ai_assistant.png" alt="AURA Copilot Neural Assistant" width="950" />
+  <br/>
+  <em>AURA Copilot: Interactive agent chat, autonomous service self-healing, process execution, and workspace provisioning.</em>
+</p>
+
+---
+
+### 2.5 Windows 11 Fluent Desktop Compositor
+<p align="center">
+  <img src="screenshots/05_desktop_environment_overview.png" alt="Fluent Desktop Compositor" width="950" />
+  <br/>
+  <em>Desktop Workspace: 48px acrylic translucent dock, distinct application icons, sound wave visualizer equalizer, and search start menu.</em>
+</p>
+
+---
+
+### 2.6 Interactive Pseudoterminal (VT100 / PTY)
+<p align="center">
+  <img src="screenshots/06_interactive_terminal_pty.png" alt="Interactive Pseudoterminal" width="950" />
+  <br/>
+  <em>PTY Terminal: Streaming full-duplex interactive bash/cmd shell with genuine compiler toolchain access (<code>gcc</code>, <code>python</code>, <code>node</code>).</em>
+</p>
+
+---
+
+### 2.7 Task Manager & Live Hardware Telemetry
+<p align="center">
+  <img src="screenshots/07_task_manager_telemetry.png" alt="Task Manager & Live Hardware Telemetry" width="950" />
+  <br/>
+  <em>Task Manager: Real-time hardware telemetry (CPU, RAM, Disks, Network) with process tree monitors and task termination signals.</em>
+</p>
+
+---
+
+### 2.8 Hierarchical File Explorer & Sandboxed Storage
+<p align="center">
+  <img src="screenshots/08_file_explorer_storage.png" alt="Hierarchical File Explorer" width="950" />
+  <br/>
+  <em>File Explorer: Sandboxed filesystem browser managing <code>~/Documents</code>, <code>~/Downloads</code>, file uploads/downloads, and recycle bin recovery.</em>
+</p>
+
+---
+
+### 2.9 Multi-Stage UEFI Diagnostic Bootloader
+<p align="center">
+  <img src="screenshots/09_uefi_bootloader_sequence.png" alt="Multi-Stage UEFI Bootloader" width="950" />
+  <br/>
+  <em>Boot Sequence: Multi-stage UEFI ACPI hardware probing, physical RAM allocation verification, and storage overlay mounting.</em>
+</p>
+
+---
+
+### 2.10 System Settings & Control Panel
+<p align="center">
+  <img src="screenshots/10_system_settings_control_panel.png" alt="System Settings & Control Panel" width="950" />
+  <br/>
+  <em>System Settings: Desktop personalization, high-contrast themes, wallpaper canvas engines, and network management.</em>
+</p>
+
+---
+
+## 3. High-Level Architectural Topology
 
 ```mermaid
 graph TB
@@ -54,56 +146,9 @@ graph TB
 
 ---
 
-## Comprehensive Visual Gallery
+## 4. Dual-Twin Multi-Agent Topology (5 Distributed Cores)
 
-### 1. Dual-Twin Multi-Agent Studio
-<p align="center">
-  <img src="docs/screenshots/01_dual_twin_studio_orchestrator.png" alt="Dual-Twin Studio" width="900" />
-  <br/>
-  <em>Dual-Twin Studio: 5-Core DAG Consensus Matrix, capability verification, and autonomous self-healing recovery sequence.</em>
-</p>
-
-### 2. Academic Research Paper & Studio IDE
-<p align="center">
-  <img src="docs/screenshots/02_latex_studio_academic_editor.png" alt="LaTeX Academic Editor" width="900" />
-  <br/>
-  <em>Studio IDE: Split-pane editing, KaTeX live math rendering, clean black-and-white academic typography, and 1-click native PDF compilation.</em>
-</p>
-
-### 3. Full-Stack Web Application Runtime
-<p align="center">
-  <img src="docs/screenshots/03_fullstack_web_app_browser.png" alt="Full-Stack Web App" width="900" />
-  <br/>
-  <em>Multi-Tab Desktop Browser: Live Node.js backend executing on port 3000 inside the AURA-OS sandbox with real-time API telemetry.</em>
-</p>
-
-### 4. AURA Copilot Neural AI Assistant
-<p align="center">
-  <img src="docs/screenshots/04_aura_copilot_ai_assistant.png" alt="AURA Copilot" width="900" />
-  <br/>
-  <em>AURA Copilot: Interactive agent chat, autonomous service self-healing, and workspace provisioning.</em>
-</p>
-
-### 5. Windows 11 Fluent Desktop Compositor
-<p align="center">
-  <img src="docs/screenshots/05_desktop_environment_overview.png" alt="Desktop Overview" width="900" />
-  <br/>
-  <em>Desktop Workspace: 48px acrylic translucent dock, distinct application icons, sound wave equalizer, and search start menu.</em>
-</p>
-
-### 6. Interactive Pseudoterminal (VT100 / PTY)
-<p align="center">
-  <img src="docs/screenshots/06_interactive_terminal_pty.png" alt="Interactive Terminal" width="900" />
-  <br/>
-  <em>PTY Terminal: Streaming full-duplex interactive bash/cmd shell with genuine compiler toolchain access.</em>
-</p>
-
----
-
-## Core System Architecture & Features
-
-### 1. Dual-Twin Multi-Agent Topology (5 Distributed Cores)
-AURA-OS coordinates 5 autonomous distributed agent cores arranged in an execution pipeline:
+AURA-OS coordinates 5 autonomous distributed agent cores arranged in a directed acyclic graph (DAG):
 
 ```mermaid
 flowchart LR
@@ -113,17 +158,19 @@ flowchart LR
     D --> E["Core 05: Epsilon-Supervisor<br/>(Replica Synchronization)"]
 ```
 
-| Core | Agent Name | Primary Responsibility | Execution Artifacts |
-| :--- | :--- | :--- | :--- |
-| **01** | **Alpha-Planner** | Dissects natural language requests, formulates DAG dependency lists, and classifies target runtime environments (`latex-research`, `fullstack-app`, `python-datascience`). | Structured Mission Plan, DAG dependency list. |
-| **02** | **Gamma-Sentinel** | Scans host compilers, libraries, and system PATH. Determines if the local machine is 100% compatible or if a **Replica Twin** must take over. | Environmental Audit Matrix, Capability Verdict. |
-| **03** | **Beta-Synthesizer** | Synthesizes authentic source files, package manifests, and academic document structures directly to `~/Documents/`. | Directory trees, starter code, templates. |
-| **04** | **Delta-Auditor** | Performs static AST validation, UTF-8 encoding checks, and cyclic import detection ensuring 0 syntax errors. | Syntax pass log, 0-error integrity report. |
-| **05** | **Epsilon-Supervisor** | Maintains sub-2ms state synchronization between host and replica workspaces before launching Studio IDE. | Live sync pulse, event bus notification. |
+### The 5 Agent Cores Specification
+
+| Core | Agent Name | Primary Responsibility | Execution Artifacts | Fallback Mode |
+| :--- | :--- | :--- | :--- | :--- |
+| **01** | **Alpha-Planner** | Ingests mission requests, plans tasks, formulates DAG dependency requirements, and classifies runtime environments (`latex-research`, `fullstack-app`, `python-datascience`). | Structured Mission Plan, DAG dependency list. | Pure LLM / Local rule-based decomposition. |
+| **02** | **Gamma-Sentinel** | Audits host compilers (`pdflatex`, `gcc`, `node`, `python`) and system PATH. Determines if the local machine is 100% compatible or if a **Replica Twin** must take over. | Environmental Audit Matrix, Capability Verdict. | Autonomous Replica Twin Takeover. |
+| **03** | **Beta-Synthesizer** | Scaffolds files, directories, manifests (`main.tex`, `package.json`, `main.py`) directly to `~/Documents/`. | Directory trees, starter code, templates. | Pure template synthesis via `env.py`. |
+| **04** | **Delta-Auditor** | Performs static AST validation, UTF-8 encoding checks, and cyclic import detection ensuring 0 syntax errors. | Syntax pass log, 0-error integrity report. | Static syntax linting & KaTeX verification. |
+| **05** | **Epsilon-Supervisor** | Maintains sub-2ms state synchronization between host and replica workspaces before launching Studio IDE. | Live sync pulse, event bus notification. | Local memory cache sync. |
 
 ---
 
-### 2. Autonomous Self-Healing & Replica Takeover
+## 5. Autonomous Self-Healing & Replica Takeover Sequence
 
 ```mermaid
 sequenceDiagram
@@ -162,27 +209,7 @@ sequenceDiagram
 
 ---
 
-### 3. Academic Research Paper & Native PDF Studio
-- **Black-and-White Academic Typography**: Complies with IEEE/ACM standards using clean serif typefaces, balanced margin geometry, and KaTeX mathematical formulas.
-- **Native Binary PDF Compilation**: Compiles raw LaTeX into high-resolution black-and-white `.pdf` documents directly into `~/Downloads/`.
-- **Non-Blocking Background Printing**: Utilizes sandboxed iframe workers to eliminate desktop freezing during heavy print/PDF operations.
-
----
-
-### 4. Zero-Dependency Python Core Kernel Backend
-- **Pure Python Standard Library**: Built without third-party pip dependencies (`http.server`, `socket`, `threading`, `subprocess`, `select`, `pty`, `fcntl`).
-- **Micro-Footprint**: Idles under 48 MB RAM (peak load under 112 MB RAM).
-- **100% Genuine File Execution**: Operates exclusively against local system storage—zero mocked or simulated data.
-
----
-
-### 5. Hardware-Accelerated Fluent Window Compositor
-- **60+ FPS Rendering Pipeline**: Native GPU-composed CSS layers (`transform`, `opacity`) for smooth window movement, snapping, and minimization.
-- **Windows 11 Acrylic Taskbar**: 48px translucent dock featuring centered app pins, distinct application icons, sound wave visualizer, system tray flyouts, and start menu search.
-
----
-
-## Applications Ecosystem
+## 6. Applications Ecosystem
 
 | Application | Identifier | Launch Shortcut | Key Capabilities |
 | :--- | :--- | :--- | :--- |
@@ -202,7 +229,7 @@ sequenceDiagram
 
 ---
 
-## Quickstart & Launching
+## 7. Quickstart & Deployment Guide
 
 ### Option 1: Native Host Launcher (Recommended)
 Runs AURA-OS directly against your host's bare-metal hardware and Python runtime for butter-smooth 60+ FPS cursor fidelity and zero virtualization driver capture bottlenecks:
@@ -233,11 +260,11 @@ msedge --app=http://localhost:8000 --start-maximized
 
 ---
 
-## Clean Project Structure
+## 8. Clean Project Directory Structure
 
 ```
 D:\AURA-OS\
-├── .github/                       # GitHub Actions CI/CD & Automation
+├── .github/                       # GitHub Actions CI/CD & Automation Workflows
 │   └── workflows/
 │       └── ci.yml                 # Automated Python syntax check & release packaging
 ├── aura_core/                     # Backend Kernel Subsystems & Web Shell
@@ -271,12 +298,17 @@ D:\AURA-OS\
 │   ├── BENCHMARKS.md              # Performance, Memory, and Latency Comparisons
 │   ├── QUICKSTART.md              # Step-by-Step Deployment Guide
 │   └── screenshots/               # High-Resolution UI Captures
-│       ├── 01_dual_twin_studio_orchestrator.png
-│       ├── 02_latex_studio_academic_editor.png
-│       ├── 03_fullstack_web_app_browser.png
-│       ├── 04_aura_copilot_ai_assistant.png
-│       ├── 05_desktop_environment_overview.png
-│       └── ...
+├── screenshots/                   # Root Visual Architecture Captures
+│   ├── 01_dual_twin_studio_orchestrator.png
+│   ├── 02_latex_studio_academic_editor.png
+│   ├── 03_fullstack_web_app_browser.png
+│   ├── 04_aura_copilot_ai_assistant.png
+│   ├── 05_desktop_environment_overview.png
+│   ├── 06_interactive_terminal_pty.png
+│   ├── 07_task_manager_telemetry.png
+│   ├── 08_file_explorer_storage.png
+│   ├── 09_uefi_bootloader_sequence.png
+│   └── 10_system_settings_control_panel.png
 ├── scripts/                       # ISO, VMDK, and Build Utilities
 │   ├── build_alpine_live.py
 │   ├── build_complete_iso.py
@@ -290,7 +322,7 @@ D:\AURA-OS\
 
 ---
 
-## Technical Documentation & References
+## 9. Technical Documentation & References
 
 - [Dual-Twin Multi-Agent Topology Specification](docs/DUAL_TWIN_ARCHITECTURE.md)
 - [System Architecture Specification](docs/ARCHITECTURE.md)
@@ -301,7 +333,7 @@ D:\AURA-OS\
 
 ---
 
-## Academic Information
+## 10. Academic Information
 
 - **Project**: Major Project (Mid-Semester Evaluation)
 - **Author**: Nitanshu Tak (SAP ID: `500121943`)
