@@ -1,0 +1,74 @@
+name: AURA-OS CI & Release Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  verify:
+    name: Backend Compilation & Static Integrity Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Verify Python Code Compilation
+        run: |
+          python -m py_compile aura_core/server.py aura_core/ai_engine.py aura_core/api/env.py aura_core/api/proxy.py aura_core/api/fs.py aura_core/api/proc.py aura_core/ws.py
+          echo "All Python core kernel modules compiled cleanly."
+
+      - name: Set up Node.js for Client Verification
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Verify Web Shell Assets
+        run: |
+          node -e "
+            const fs = require('fs');
+            const files = [
+              'aura_core/ui/index.html',
+              'aura_core/ui/css/tokens.css',
+              'aura_core/ui/css/base.css',
+              'aura_core/ui/js/main.js',
+              'aura_core/ui/js/apps/twin.js',
+              'aura_core/ui/js/apps/agent.js',
+              'aura_core/ui/js/apps/editor.js'
+            ];
+            files.forEach(f => {
+              if (!fs.existsSync(f)) throw new Error('Missing file: ' + f);
+            });
+            console.log('All primary frontend modules verified.');
+          "
+
+  release:
+    name: Automated Production GitHub Release
+    needs: verify
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Create Production Release Bundle
+        run: |
+          mkdir -p dist
+          tar --exclude='.git' --exclude='NitanshuOS' --exclude='buildroot' -czf dist/AURA-OS-Production.tar.gz .
+          echo "Package created at dist/AURA-OS-Production.tar.gz"
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/AURA-OS-Production.tar.gz
+          generate_release_notes: true
