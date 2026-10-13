@@ -208,6 +208,9 @@ export const TerminalApp = {
         else if (e.ctrlKey && e.key.toLowerCase() === 'v') {
           // Native paste handled or passed through
           return;
+        } else if (!e.ctrlKey && !e.altKey && !e.metaKey && e.key.length === 1) {
+          e.preventDefault();
+          ws.send(e.key);
         }
       } else if (fallbackMode) {
         // HTTP Shell buffer mode

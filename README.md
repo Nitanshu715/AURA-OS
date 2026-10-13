@@ -36,7 +36,16 @@ AURA-OS eliminates the traditional compromise between heavy, resource-intensive 
 
 ---
 
-### 2.3 Live Full-Stack Web Application Runtime
+### 2.3 Genuine Black-and-White Academic PDF Build Output
+<p align="center">
+  <img src="screenshots/11_academic_paper_pdf_preview.png" alt="Compiled Academic PDF Document" width="950" />
+  <br/>
+  <em>Compiled Document: Production IEEE/ACM academic standard PDF with mathematical equations and formal section styling.</em>
+</p>
+
+---
+
+### 2.4 Live Full-Stack Web Application Runtime
 <p align="center">
   <img src="screenshots/03_fullstack_web_app_browser.png" alt="Full-Stack Web App Runtime" width="950" />
   <br/>
@@ -45,7 +54,7 @@ AURA-OS eliminates the traditional compromise between heavy, resource-intensive 
 
 ---
 
-### 2.4 AURA Copilot Neural AI Assistant
+### 2.5 AURA Copilot Neural AI Assistant
 <p align="center">
   <img src="screenshots/04_aura_copilot_ai_assistant.png" alt="AURA Copilot Neural Assistant" width="950" />
   <br/>
@@ -54,7 +63,7 @@ AURA-OS eliminates the traditional compromise between heavy, resource-intensive 
 
 ---
 
-### 2.5 Windows 11 Fluent Desktop Compositor
+### 2.6 Windows 11 Fluent Desktop Compositor
 <p align="center">
   <img src="screenshots/05_desktop_environment_overview.png" alt="Fluent Desktop Compositor" width="950" />
   <br/>
@@ -63,7 +72,7 @@ AURA-OS eliminates the traditional compromise between heavy, resource-intensive 
 
 ---
 
-### 2.6 Interactive Pseudoterminal (VT100 / PTY)
+### 2.7 Interactive Pseudoterminal (VT100 / PTY)
 <p align="center">
   <img src="screenshots/06_interactive_terminal_pty.png" alt="Interactive Pseudoterminal" width="950" />
   <br/>
@@ -72,7 +81,7 @@ AURA-OS eliminates the traditional compromise between heavy, resource-intensive 
 
 ---
 
-### 2.7 Task Manager & Live Hardware Telemetry
+### 2.8 Task Manager & Live Hardware Telemetry
 <p align="center">
   <img src="screenshots/07_task_manager_telemetry.png" alt="Task Manager & Live Hardware Telemetry" width="950" />
   <br/>
@@ -81,7 +90,7 @@ AURA-OS eliminates the traditional compromise between heavy, resource-intensive 
 
 ---
 
-### 2.8 Hierarchical File Explorer & Sandboxed Storage
+### 2.9 Hierarchical File Explorer & Sandboxed Storage
 <p align="center">
   <img src="screenshots/08_file_explorer_storage.png" alt="Hierarchical File Explorer" width="950" />
   <br/>
@@ -90,7 +99,7 @@ AURA-OS eliminates the traditional compromise between heavy, resource-intensive 
 
 ---
 
-### 2.9 Multi-Stage UEFI Diagnostic Bootloader
+### 2.10 Multi-Stage UEFI Diagnostic Bootloader
 <p align="center">
   <img src="screenshots/09_uefi_bootloader_sequence.png" alt="Multi-Stage UEFI Bootloader" width="950" />
   <br/>
@@ -99,7 +108,7 @@ AURA-OS eliminates the traditional compromise between heavy, resource-intensive 
 
 ---
 
-### 2.10 System Settings & Control Panel
+### 2.11 System Settings & Control Panel
 <p align="center">
   <img src="screenshots/10_system_settings_control_panel.png" alt="System Settings & Control Panel" width="950" />
   <br/>
